@@ -8,7 +8,10 @@ import { createId } from "../utils";
 
 type Patients = Array<PatientEntry>;
 
-const patients: Patients = patientsData as Patients;
+const patients: Patients = (patientsData as Patients).map((p) => ({
+  ...p,
+  entries: [],
+}));
 
 const getAll = (): Patients => [...patients];
 const getAllWithoutSsn = (): Array<NonSensitivePatientEntry> =>
@@ -30,4 +33,11 @@ const addPatient = (entry: NewPatientEntry) => {
   return patient;
 };
 
-export default { getAll, getAllWithoutSsn, addPatient };
+const getById = (id: PatientEntry["id"]): PatientEntry | undefined => {
+  const patient = patients.find((p) => p.id === id);
+
+  return patient;
+  // if(!patient) return
+};
+
+export default { getAll, getAllWithoutSsn, addPatient, getById };
