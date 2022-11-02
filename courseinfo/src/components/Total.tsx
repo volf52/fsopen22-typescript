@@ -1,15 +1,15 @@
 import { Course } from "../types";
 
 interface TotalProps {
-  courses: Course[];
+  parts: Course[];
 }
 
-const Total = ({ courses }: TotalProps) => (
+const Total = ({ parts }: TotalProps) => (
   <div>
     {" "}
     <p>
       Number of exercises{" "}
-      {courses.reduce((carry, part) => carry + part.exerciseCount, 0)}
+      {parts.reduce((carry, part) => carry + part.exerciseCount, 0)}
     </p>
   </div>
 );
