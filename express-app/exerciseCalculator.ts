@@ -10,7 +10,7 @@ if (args.length < 4) {
 type Rating = 1 | 2 | 3;
 type RatingDescription = "barely ok" | "satisfactory" | "good";
 
-interface Exercises {
+type Exercises = {
   periodLength: number;
   trainingDays: number;
   success: boolean;
@@ -18,7 +18,7 @@ interface Exercises {
   ratingDescription: RatingDescription;
   target: number;
   average: number;
-}
+};
 
 const calculateExercises = (
   dailyExerciseHours: number[],
