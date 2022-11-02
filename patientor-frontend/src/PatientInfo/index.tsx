@@ -4,8 +4,9 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiBaseUrl } from "../constants";
-import { Patient } from "../types";
+import type { Patient } from "../types";
 import { addPatient, useStateValue } from "../state";
+import Entries from './Entries';
 
 const PatientInfo = () => {
   const { id } = useParams<{ id: string }>();
@@ -32,13 +33,18 @@ const PatientInfo = () => {
   if (!patient) return <div>Loading...</div>;
 
   return (
-    <div style={{ paddingTop: 20 }}>
+    <Box paddingTop={5}>
       <Box>
-        <Typography variant="h4">{patient.name} - {patient.gender}</Typography>
-        <Typography>ssn: {patient.ssn}</Typography>
-        <Typography>occupation: {patient.occupation}</Typography>
+        <Typography variant="h2">{patient.name} - {patient.gender}</Typography>
+
+        <Box paddingY={3}>
+          <Typography>ssn: {patient.ssn}</Typography>
+          <Typography>occupation: {patient.occupation}</Typography>
+        </Box>
+
+        <Entries entries={patient.entries} />
       </Box>
-    </div>
+    </Box>
   );
 };
 
