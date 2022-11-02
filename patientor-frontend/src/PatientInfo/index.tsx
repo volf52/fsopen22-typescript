@@ -1,18 +1,11 @@
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-// import SvgIcon from '@material-ui/core/SvgIcon';
 import axios from "axios";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { apiBaseUrl } from "../constants";
 import { Patient } from "../types";
-import { useStateValue } from "../state";
-
-// import maleSvg from './male.svg';
-// import femaleSvg from './female.svg';
-
-// const MaleIcon = () => <SvgIcon fontSize='large'>{maleSvg}</SvgIcon>;
-// const FemaleIcon = () => <SvgIcon>{femaleSvg}</SvgIcon>;
+import { addPatient, useStateValue } from "../state";
 
 const PatientInfo = () => {
   const { id } = useParams<{ id: string }>();
@@ -32,7 +25,7 @@ const PatientInfo = () => {
     console.debug(`id ${id} not in state. Fetching`);
 
     axios.get(`${apiBaseUrl}/patients/${id}`).then(resp => resp.data as Patient).then((patient) => {
-      dispatch({ type: 'ADD_PATIENT', payload: patient });
+      dispatch(addPatient(patient));
     }).catch(console.error);
   }, []);
 
