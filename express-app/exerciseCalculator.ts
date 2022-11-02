@@ -39,7 +39,7 @@ const calculateExercises = (
   if (ratio < 0.55) {
     rating = 1;
     ratingDescription = "barely ok";
-  } else if (rating < 0.95) {
+  } else if (ratio < 0.95) {
     rating = 2;
     ratingDescription = "satisfactory";
   } else {
