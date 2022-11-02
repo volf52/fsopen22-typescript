@@ -1,4 +1,5 @@
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import axios from "axios";
 import { useEffect } from "react";
@@ -18,7 +19,7 @@ const PatientInfo = () => {
 
   useEffect(() => {
     if (!id) return;
-    if (patient) {
+    if (patient && patient.ssn) {
       console.debug(`id ${id} already in state. not refetching`);
       return;
     }
@@ -33,16 +34,20 @@ const PatientInfo = () => {
   if (!patient) return <div>Loading...</div>;
 
   return (
-    <Box paddingTop={5}>
+    <Box marginTop={5}>
       <Box>
         <Typography variant="h2">{patient.name} - {patient.gender}</Typography>
 
-        <Box paddingY={3}>
+        <Box marginY={1} padding={2}>
           <Typography>ssn: {patient.ssn}</Typography>
           <Typography>occupation: {patient.occupation}</Typography>
         </Box>
 
         <Entries entries={patient.entries} />
+        <Button variant="contained" color="primary" >
+          Add New Entry
+        </Button>
+
       </Box>
     </Box>
   );
