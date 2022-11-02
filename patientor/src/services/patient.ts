@@ -3,6 +3,8 @@ import type {
   PatientEntry,
   NonSensitivePatientEntry,
   NewPatientEntry,
+  EntryWithoutId,
+  Entry,
 } from "../types";
 import { createId } from "../utils";
 
@@ -37,4 +39,12 @@ const getById = (id: PatientEntry["id"]): PatientEntry | undefined => {
   // if(!patient) return
 };
 
-export default { getAll, getAllWithoutSsn, addPatient, getById };
+const addEntry = (patient: PatientEntry, entry: EntryWithoutId): Entry => {
+  const e: Entry = { ...entry, id: createId() };
+
+  patient.entries.push(e);
+
+  return e;
+};
+
+export default { getAll, getAllWithoutSsn, addPatient, getById, addEntry };
