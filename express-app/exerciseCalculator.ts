@@ -1,3 +1,12 @@
+const args = process.argv;
+
+if (args.length < 4) {
+  console.log(
+    "Usage: ts-node exerciseCalculator.ts {target} {day1Hours} {day2Hours} ... {dayNHours}"
+  );
+  process.exit(1);
+}
+
 type Rating = 1 | 2 | 3;
 type RatingDescription = "barely ok" | "satisfactory" | "good";
 
@@ -49,4 +58,22 @@ const calculateExercises = (
   };
 };
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+const target = parseFloat(args[2]);
+if (isNaN(target)) {
+  console.log("target must be a number");
+  process.exit(1);
+}
+
+const hours: number[] = [];
+
+for (let i = 3; i < args.length; i++) {
+  const h = parseFloat(args[i]);
+  if (isNaN(h)) {
+    console.log("hours given must be a number");
+    process.exit(1);
+  }
+
+  hours.push(h);
+}
+
+console.log(calculateExercises(hours, target));

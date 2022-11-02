@@ -1,3 +1,10 @@
+const argv = process.argv;
+
+if (argv.length !== 4) {
+  console.error("Usage: ts-node bmiCalculator.ts {height} {weight}");
+  process.exit(1);
+}
+
 const calculateBmi = (heightInCm: number, weightInKg: number) => {
   const heightInMeters = heightInCm / 100;
 
@@ -12,4 +19,12 @@ const calculateBmi = (heightInCm: number, weightInKg: number) => {
   return "Underweight";
 };
 
-console.log(calculateBmi(180, 74));
+const height = parseFloat(argv[2]);
+const weight = parseFloat(argv[3]);
+
+if (isNaN(height) || isNaN(weight)) {
+  console.log("height/weight must be numbers");
+  process.exit(1);
+}
+
+console.log(calculateBmi(height, weight));
