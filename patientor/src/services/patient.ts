@@ -1,5 +1,6 @@
 import patientsData from "../../data/patients.json";
 import type { PatientEntry, NonSensitivePatientEntry } from "../types";
+import { createId } from "../utils";
 
 type Patients = Array<PatientEntry>;
 
@@ -14,4 +15,25 @@ const getAllWithoutSsn = (): Array<NonSensitivePatientEntry> =>
     return x;
   });
 
-export default { getAll, getAllWithoutSsn };
+const addPatient = (
+  name: string,
+  occupation: string,
+  gender: string,
+  dateOfBirth: string,
+  ssn: string
+) => {
+  const patient: PatientEntry = {
+    id: createId(),
+    name,
+    occupation,
+    gender,
+    dateOfBirth,
+    ssn,
+  };
+
+  patients.push(patient);
+
+  return patient;
+};
+
+export default { getAll, getAllWithoutSsn, addPatient };

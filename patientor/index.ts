@@ -4,6 +4,7 @@ import diagnosesRouter from "./src/controllers/diagnoses";
 import patientsRouter from "./src/controllers/patient";
 
 const app = express();
+app.use(express.json());
 
 app.get("/api/ping", (_req, resp) => {
   return resp.send("pong");
