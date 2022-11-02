@@ -8,10 +8,7 @@ import { createId } from "../utils";
 
 type Patients = Array<PatientEntry>;
 
-const patients: Patients = (patientsData as Patients).map((p) => ({
-  ...p,
-  entries: [],
-}));
+const patients: Patients = patientsData as Patients;
 
 const getAll = (): Patients => [...patients];
 const getAllWithoutSsn = (): Array<NonSensitivePatientEntry> =>

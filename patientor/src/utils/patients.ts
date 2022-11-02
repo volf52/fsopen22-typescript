@@ -14,6 +14,7 @@ export const toNewPatientEntry = (fields: unknown): NewPatientEntry => {
     dateOfBirth: requiredDate(dateOfBirth, "dateOfBirth"),
     ssn: requiredString(ssn, "ssn"),
     gender: requiredGender(gender),
+    entries: [],
   };
 
   return patient;
