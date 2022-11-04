@@ -1,13 +1,13 @@
-import type { Entry } from '../types';
+import type { Entry } from "../types";
 // import { useStateValue } from '../state';
 
-import HospitalEntryDetails from './HospitalEntryDetails';
-import HealthCheckEntryDetails from './HealthCheckEntryDetails';
-import OccupationalHealthcareEntryDetails from './OccupationalHealthcareEntryDetails';
-import { assertNever } from '../utils';
+import HospitalEntryDetails from "./HospitalEntryDetails";
+import HealthCheckEntryDetails from "./HealthCheckEntryDetails";
+import OccupationalHealthcareEntryDetails from "./OccupationalHealthcareEntryDetails";
+import { assertNever } from "../utils";
 
 interface EntryDetailsProps {
-  entry: Entry
+  entry: Entry;
 }
 
 const EntryDetails = ({ entry }: EntryDetailsProps) => {
@@ -23,15 +23,32 @@ const EntryDetails = ({ entry }: EntryDetailsProps) => {
   }
 };
 
-{/* <ul> */ }
-{/*      {entry.diagnosisCodes && entry.diagnosisCodes.map(e => { */ }
-{/*        const d = diagnoses[e]; */ }
-{/**/ }
-{/*        if (!d) return <li key={e}>{e}</li>; */ }
-{/**/ }
-{/*        return <li key={e}>{e} - {d.name}</li>; */ }
-{/*      })} */ }
-{/*    </ul> */ }
-
+{
+  /* <ul> */
+}
+{
+  /*      {entry.diagnosisCodes && entry.diagnosisCodes.map(e => { */
+}
+{
+  /*        const d = diagnoses[e]; */
+}
+{
+  /**/
+}
+{
+  /*        if (!d) return <li key={e}>{e}</li>; */
+}
+{
+  /**/
+}
+{
+  /*        return <li key={e}>{e} - {d.name}</li>; */
+}
+{
+  /*      })} */
+}
+{
+  /*    </ul> */
+}
 
 export default EntryDetails;

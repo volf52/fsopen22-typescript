@@ -28,7 +28,10 @@ const App = () => {
     };
     void fetchPatientList();
 
-    axios.get<Diagnosis[]>(`${apiBaseUrl}/diagnoses`).then(r => dispatch(setDiagnosesList(r.data))).catch(console.error);
+    axios
+      .get<Diagnosis[]>(`${apiBaseUrl}/diagnoses`)
+      .then((r) => dispatch(setDiagnosesList(r.data)))
+      .catch(console.error);
   }, [dispatch]);
 
   return (

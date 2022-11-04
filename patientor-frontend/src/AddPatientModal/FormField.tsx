@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { ErrorMessage, Field, FieldProps, FormikProps } from "formik";
 import {
   Select,
@@ -8,10 +8,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Diagnosis, Gender } from "../types";
-import { InputLabel } from "@material-ui/core";
+import InputLabel from "@material-ui/core/InputLabel";
 import Input from "@material-ui/core/Input";
 
-// structure of a single option
 export type GenderOption = {
   value: Gender;
   label: string;
